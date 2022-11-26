@@ -1,0 +1,40 @@
+## JOBS ##
+# Push SignalK - InfluxDB
+publish_influx_package_dev:
+  stage: build
+  image: node:14
+  script:
+    - cd ./packages/signalk-to-influxdb
+    - yarn
+    - echo "//gitlab.com/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken=${CI_JOB_TOKEN}">.npmrc
+    - npm version patch
+    - npm publish --tag beta
+  cache:
+    key: ${CI_PROJECT_ID}-${CI_ENVIRONMENT_NAME}
+    paths:
+      - .npm/
+  only:
+    refs:
+      - dev
+      - feat/CI
+    changes:
+      - packages/signalk-to-influxdb/**/*
+
+publish_influx_package_master:
+  stage: build
+  image: node:14
+  script:
+    - cd ./packages/signalk-to-influxdb
+    - yarn
+    - echo "//gitlab.com/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken=${CI_JOB_TOKEN}">.npmrc
+    - npm version patch
+    - npm publish
+  cache:
+    key: ${CI_PROJECT_ID}-${CI_ENVIRONMENT_NAME}
+    paths:
+      - .npm/
+  only:
+    refs:
+      - main
+    changes:
+      - packages/signalk-to-influxdb/**/*

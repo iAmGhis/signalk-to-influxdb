@@ -1,0 +1,26 @@
+{
+  "name": "signalk-to-influxdb-forked",
+  "version": "3.0.1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "signalk-node-server-plugin"
+  ],
+  "author": "Phil Begg, modified by Ghislain Pitrat",
+  "license": "ISC",
+  "dependencies": {
+    "@influxdata/influxdb-client": "^1.12.0",
+    "influxdb-v2": "0.0.7",
+    "nodes2ts": "^2.0.0"
+  },
+  "description": "Plugin that saves data to an influxdbv2 database - buffers data without internet connection",
+  "bugs": {
+    "url": "https://github.com/pbegg/signalk-to-influxdb-v2-buffering/issues"
+  },
+  "homepage": "https://github.com/pbegg/signalk-to-influxdb-v2-buffering#readme",
+  "engines": {
+    "node": "<16"
+  }
+}
